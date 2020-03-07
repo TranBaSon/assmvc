@@ -17,7 +17,13 @@ namespace PenalizeManagement.Controllers
         // GET: Penalizes
         public ActionResult Index()
         {
-            return View(db.Penalizes.ToList());
+            var totalPayment = db.Penalizes.Where(p => p.PenaltyOption == Options.payment).Sum(p => (Double?)p.amount);
+            var totalPushUp = db.Penalizes.Where(p => p.PenaltyOption == Options.pushUp).Sum(p => (Double?)p.amount);
+            ResponeEntitycs responeEntitycs = new ResponeEntitycs();
+            responeEntitycs.Penalizes = db.Penalizes.ToList();
+            responeEntitycs.totalPayment = totalPayment ?? 0;
+            responeEntitycs.totalPushUp = totalPushUp ?? 0;
+            return View(responeEntitycs);
         }
 
         // GET: Penalizes/Details/5

@@ -1,10 +1,14 @@
-﻿@model IEnumerable<PenalizeManagement.Models.Penalize>
+﻿@model PenalizeManagement.Models.ResponeEntitycs
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+<div>
+    <div>TotalPayment: @Model.totalPayment</div>
+    <div>TotalPushUp: @Model.totalPushUp</div>
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,21 +16,21 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RollNumber)
+            RollNumber
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PenaltyOption)
+            PenaltyOption
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.amount)
+            amount
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Deadline)
+            Deadline
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Penalizes) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.RollNumber)
